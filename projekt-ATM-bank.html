@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Banking | Raiffeisen Bank</title>
+   
+</head>
+<body>
+
+
+     <style>
+        @import url('https://fonts.googleapis.com');
+
+        :root {
+            --r-yellow: #FEE600;
+            --r-black: #000000;
+            --r-grey-bg: #F9F9F9;
+            --r-text: #1A1A1A;
+            --r-border: #E5E5E5;
+        }
+
+        body {
+            background-color: white;
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            color: var(--r-text);
+            overflow-x: hidden;
+        }
+
+        /* --- NAV BAR --- */
+        .navbar {
+            height: 70px;
+            border-bottom: 1px solid var(--r-border);
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo-box {
+            background: var(--r-yellow);
+            padding: 5px 10px;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: none; /* Hidden on mobile */
+            gap: 25px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Mobile Menu Toggle (Simplified) */
+        .mobile-toggle {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: var(--r-black);
+            color: white;
+            padding: 60px 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(32px, 8vw, 56px); /* Responsive font scaling */
+            line-height: 1.1;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        /* The signature "L" or Corner */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--r-yellow);
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+
+        /* --- TERMINAL WIDGET --- */
+        .web-terminal {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            color: var(--r-text);
+            width: 100%;
+            max-width: 450px;
+            box-sizing: border-box;
+            align-self: center;
+        }
+
+        .terminal-header {
+            border-bottom: 4px solid var(--r-yellow);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .form-group { margin-bottom: 15px; }
+
+        label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #888;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--r-border);
+            background: var(--r-grey-bg);
+            font-size: 16px;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .btn-black {
+            background: var(--r-black);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        #portal-display {
+            margin-top: 20px;
+            padding: 15px;
+            background: #FEE60010;
+            border-radius: 6px;
+            border-left: 4px solid var(--r-yellow);
+            min-height: 50px;
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: 1fr; /* Stacked on mobile */
+            gap: 30px;
+        }
+
+        .feature-card {
+            border-top: 3px solid var(--r-yellow);
+            padding: 20px 0;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (min-width: 992px) {
+            .navbar { padding: 0 10%; }
+            .nav-links { display: flex; }
+            .mobile-toggle { display: none; }
+            
+            .hero {
+                padding: 100px 10%;
+                flex-direction: row; /* Side-by-side on desktop */
+                justify-content: space-between;
+                align-items: center;
+            }
+            .hero-text { flex: 1; }
+            .web-terminal { flex: 0 0 400px; }
+
+            .features {
+                padding: 80px 10%;
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+            }
+            
+            .hero::after { width: 150px; height: 150px; }
+        }
+    </style>
+
+
+
+    <nav class="navbar">
+        <div class="logo-area">
+            <div class="logo-box">X</div>
+            <div style="font-weight: 800; font-size: 20px;">Raiffeisen</div>
+        </div>
+        
+        <div class="nav-links">
+            <span>Accounts</span>
+            <span>Cards</span>
+            <span>Loans</span>
+            <span style="color: var(--r-yellow); background: black; padding: 8px 20px; border-radius: 4px; cursor: pointer;">My Bank Login</span>
+        </div>
+
+        <div class="mobile-toggle">≡</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Digital Banking<br>Without Limits.</h1>
+            <p style="font-size: 18px; margin-top: 20px; color: #bbb; max-width: 500px;">
+                Manage your finances with the most secure platform in Central Europe. Experience Raiffeisen 2026.
+            </p>
+        </div>
+
+        <div class="web-terminal">
+            <div class="terminal-header">
+                <h3 style="margin:0">Quick Transaction</h3>
+            </div>
+            
+            <div class="form-group">
+                <label>PIN Code</label>
+                <input type="password" id="pin" placeholder="••••">
+            </div>
+
+            <div class="form-group">
+                <label>Action</label>
+                <select id="action">
+                    <option value="balance">Check Balance</option>
+                    <option value="deposit">Deposit Funds</option>
+                    <option value="withdraw">Transfer Out</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Amount (EUR)</label>
+                <input type="number" id="amount" placeholder="0.00">
+            </div>
+
+            <button class="btn-black" id="execute">Process Securely</button>
+
+            <div id="portal-display">
+                <span style="font-size: 13px; color: #666;">Enter credentials to view account status.</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h4>24/7 Support</h4>
+            <p>Access our AI-powered concierge and human experts anytime, anywhere.</p>
+        </div>
+        <div class="feature-card">
+            <h4>Biometric Security</h4>
+            <p>Next-gen protection for your assets using decentralized identification.</p>
+        </div>
+        <div class="feature-card">
+            <h4>Instant SEPA</h4>
+            <p>Move money across Europe in under 10 seconds with zero commission.</p>
+        </div>
+    </section>
+
+</body>
+</html>
+
